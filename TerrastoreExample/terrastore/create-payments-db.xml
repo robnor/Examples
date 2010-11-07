@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+
+<project basedir="." name="Create Terrastore DB">
+
+	<property name="terrastore.dist" value="terrastore-0.7.0-dist" />
+	<property name="db.dir"          value="." />
+	<property name="db.name"         value="payments" />
+	<property name="db.path"         value="${db.dir}/${db.name}" />
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="${terrastore.dist}/ant/ant-contrib.jar" />
+		</classpath>
+	</taskdef>
+
+	<target name="createServerCMD">
+		<echo>DBPATH: ${db.name}</echo>
+		<echo>SERVER: ${server}</echo>
+		<echo file="${db.name}/${server}/start${server}.cmd">
+      @title [${db.name}] ${server}
+      @cd bin
+      @sh start.sh --httpPort 8000 --nodePort 6000 --shutdownPort 0 --master localhost:9510
+    </echo>
+		<echo file="${db.name}/startServers.cmd">
+			@echo off
+			cd master
+			start cmd /K startmaster.cmd
+
+			cd ..
+			cd server1
+			start cmd /K startserver1.cmd
+
+			cd ..
+			cd server2
+			start cmd /K startserver2.cmd
+		</echo>
+	</target>
+
+	<target name="createMasterCMD">
+		<echo>DBPATH: ${db.name}</echo>
+		<echo>SERVER: ${server}</echo>
+		<echo file="${db.name}/${server}/start${server}.cmd">
+  		@title [${db.name}] ${server}
+  		@cd bin
+  		@sh start.sh
+  	</echo>
+	</target>
+
+
+	<target name="startServers">
+		<antcall target="startServer">
+			<param name="db.path" value="${db.path}" />
+			<param name="server"  value="master"/>
+		</antcall>
+		<antcall target="startServer">
+			<param name="db.path" value="${db.path}" />
+			<param name="server"  value="server1"/>
+		</antcall>
+		<antcall target="startServer">
+			<param name="db.path" value="${db.path}" />
+			<param name="server"  value="server2"/>
+		</antcall>
+
+	</target>
+
+	<target name="startServer">
+		<echo>Starting server: ${server}</echo>
+		<exec dir="${db.path}/${server}/bin" executable="cmd">
+			<arg value="start" />
+			<arg value="title" />
+			<arg value="[${db.name}] - ${server}" />
+			<arg value="/D" />
+			<arg value="" />
+			<arg value="sh" />
+			<arg value="start.sh" />
+		</exec>
+	</target>
+
+	<target name="createCMDs">
+		<antcall target="createServerCMD">
+			<param name="server" value="server1"/>
+		</antcall>
+
+		<antcall target="createServerCMD">
+			<param name="server" value="server2"/>
+		</antcall>
+
+		<antcall target="createMasterCMD">
+			<param name="server" value="master"/>
+		</antcall>
+
+	</target>
+
+
+	<target name="createPaymentsDatabase">
+		<ant antfile="${terrastore.dist}/terrastore-install-windows.xml" inheritall="false" inheritrefs="false" target="createMaster2Servers">
+			<property name="quickstart.dir" location="${db.name}" />
+		</ant>
+
+		<antcall target="createCMDs" />
+	</target>
+
+</project>

@@ -1,0 +1,38 @@
+Terrastore Basics
+=======================
+
+Create DB Servers (Master, Server1, Server2)
+
+Start the servers, Server1 and Server2 points to the Master with the startup params
+
+( --httpPort 8000 --nodePort 6000 --shutdownPort 0 --master localhost:9510)
+
+Terrastore Base installation
+
+To install a single Terrastore cluster with a single active master and two Terrastore servers:
+    * Install Java 1.6.
+    * Install Apache Ant.
+    * Download the latest Terrastore distribution and unpack.
+    * Install your Terrastore master:
+
+      $> ant -f terrastore-install.xml single-master -Dinstall.dir=/path_to_master
+
+    * Install your first Terrastore server:
+
+      $> ant -f terrastore-install.xml server -Dinstall.dir=/path_to_server_1
+
+    * Install your second Terrastore server:
+
+      $> ant -f terrastore-install.xml server -Dinstall.dir=/path_to_server_2
+
+    * Start master and servers:
+
+      $path_to_master/bin> sh start.sh
+
+      $path_to_server_1/bin> sh start.sh --master _host_:9510 --httpHost _host_ --httpPort _httpPort_ --nodePort _nodePort_
+
+      $path_to_server_2/bin> sh start.sh --master _host_:9510 --httpHost _host_ --httpPort _httpPort_ --nodePort _nodePort_
+
+The 9510 port is the default master port (you can change that when installing the master). The host and httpPort will be used
+ by clients to communicate with your server, while the nodePort will be used for internal cluster communication (so it may be
+  hidden from external clients). 
