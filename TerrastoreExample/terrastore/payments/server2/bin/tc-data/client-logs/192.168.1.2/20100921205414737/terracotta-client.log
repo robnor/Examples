@@ -1,0 +1,269 @@
+2010-09-21 20:54:13,988 [Thread-1] INFO com.terracottatech.general - New logging session started.
+2010-09-21 20:54:14,050 [Thread-1] INFO com.terracottatech.console - Terracotta 3.3.0, as of 20100719-120716 (Revision 15922 by cruise@su10mo5 from 3.3)
+2010-09-21 20:54:14,081 [Thread-1] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the server at 'localhost:9510'...
+2010-09-21 20:54:14,549 [Thread-1] INFO com.terracottatech.console - Successfully loaded base configuration from server at 'localhost:9510'.
+2010-09-21 20:54:14,549 [Thread-1] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - The configuration specified by 'base configuration from server at 'localhost:9510'':
+
+<con:tc-config xmlns:con="http://www.terracotta.org/config">
+  <clients xmlns:tc="http://www.terracotta.org/config">
+    <logs>tc-data/client-logs/%i/%D</logs>
+  </clients>
+  <servers xmlns:tc="http://www.terracotta.org/config">
+    <server host="192.168.1.2" name="terrastore-single-master" bind="0.0.0.0">
+      <dso-port>9510</dso-port>
+      <jmx-port>9520</jmx-port>
+      <data>tc-data/server-data</data>
+      <logs>tc-data/server-logs</logs>
+      <statistics>tc-data/server-statistics</statistics>
+      <dso>
+        <client-reconnect-window>30</client-reconnect-window>
+        <persistence>
+          <mode>permanent-store</mode>
+        </persistence>
+      </dso>
+    </server>
+    <mirror-groups>
+      <mirror-group>
+        <ha>
+          <mode>networked-active-passive</mode>
+          <networked-active-passive>
+            <election-time>5</election-time>
+          </networked-active-passive>
+        </ha>
+        <members>
+          <member>terrastore-single-master</member>
+        </members>
+      </mirror-group>
+    </mirror-groups>
+    <update-check>
+      <enabled>false</enabled>
+    </update-check>
+  </servers>
+  <tc-properties xmlns:tc="http://www.terracotta.org/config">
+    <property name="l2.l1reconnect.enabled" value="true"/>
+    <property name="l2.l1reconnect.timeout.millis" value="1"/>
+    <property name="l1.healthcheck.l2.ping.enabled" value="true"/>
+    <property name="l1.healthcheck.l2.socketConnect" value="true"/>
+    <property name="l1.healthcheck.l2.ping.interval" value="1000"/>
+    <property name="l1.healthcheck.l2.ping.probes" value="3"/>
+  </tc-properties>
+</con:tc-config>
+2010-09-21 20:54:14,596 [Thread-1] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the file at 'C:\Users\Robert\AppData\Local\Temp\tc-config5929933474985477817.xml'...
+2010-09-21 20:54:14,596 [Thread-1] INFO com.terracottatech.console - Successfully loaded base configuration from file at 'C:\Users\Robert\AppData\Local\Temp\tc-config5929933474985477817.xml'.
+2010-09-21 20:54:14,596 [Thread-1] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - The configuration specified by 'base configuration from file at 'C:\Users\Robert\AppData\Local\Temp\tc-config5929933474985477817.xml'':
+
+<tc-config xmlns="http://www.terracotta.org/config">
+  <clients xmlns:tc="http://www.terracotta.org/config" xmlns:con="http://www.terracotta.org/config" xmlns="">
+    <logs>tc-data/client-logs/%i/%D</logs>
+    <modules>
+      <module name="terracotta-toolkit-1.0" group-id="org.terracotta.toolkit"/>
+    </modules>
+  </clients>
+  <servers xmlns:tc="http://www.terracotta.org/config" xmlns:con="http://www.terracotta.org/config" xmlns="">
+    <server host="192.168.1.2" name="terrastore-single-master" bind="0.0.0.0">
+      <dso-port>9510</dso-port>
+      <jmx-port>9520</jmx-port>
+      <data>tc-data/server-data</data>
+      <logs>tc-data/server-logs</logs>
+      <statistics>tc-data/server-statistics</statistics>
+      <dso>
+        <client-reconnect-window>30</client-reconnect-window>
+        <persistence>
+          <mode>permanent-store</mode>
+        </persistence>
+      </dso>
+    </server>
+    <mirror-groups>
+      <mirror-group>
+        <ha>
+          <mode>networked-active-passive</mode>
+          <networked-active-passive>
+            <election-time>5</election-time>
+          </networked-active-passive>
+        </ha>
+        <members>
+          <member>terrastore-single-master</member>
+        </members>
+      </mirror-group>
+    </mirror-groups>
+    <update-check>
+      <enabled>false</enabled>
+    </update-check>
+  </servers>
+  <tc-properties xmlns:tc="http://www.terracotta.org/config" xmlns:con="http://www.terracotta.org/config" xmlns="">
+    <property name="l2.l1reconnect.enabled" value="true"/>
+    <property name="l2.l1reconnect.timeout.millis" value="1"/>
+    <property name="l1.healthcheck.l2.ping.enabled" value="true"/>
+    <property name="l1.healthcheck.l2.socketConnect" value="true"/>
+    <property name="l1.healthcheck.l2.ping.interval" value="1000"/>
+    <property name="l1.healthcheck.l2.ping.probes" value="3"/>
+  </tc-properties>
+</tc-config>
+2010-09-21 20:54:14,643 [Thread-1] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2010-09-21 20:54:14,643 [Thread-1] INFO com.tc.properties.TCProperties - The property "tc.config.getFromSource.timeout" was read before initialization completed. "tc.config.getFromSource.timeout" = 30000
+2010-09-21 20:54:14,643 [Thread-1] INFO com.tc.properties.TCProperties - The property "l1.healthcheck.l2.ping.probes" was overridden to 3 from 3 by the tc-config file
+2010-09-21 20:54:14,643 [Thread-1] INFO com.tc.properties.TCProperties - The property "l1.healthcheck.l2.socketConnect" was overridden to true from true by the tc-config file
+2010-09-21 20:54:14,643 [Thread-1] INFO com.tc.properties.TCProperties - The property "l1.healthcheck.l2.ping.interval" was overridden to 1000 from 1000 by the tc-config file
+2010-09-21 20:54:14,643 [Thread-1] INFO com.tc.properties.TCProperties - The property "l1.healthcheck.l2.ping.enabled" was overridden to true from true by the tc-config file
+2010-09-21 20:54:14,643 [Thread-1] INFO com.tc.properties.TCProperties - The property "l2.l1reconnect.enabled" was overridden to true from false by the tc-config file
+2010-09-21 20:54:14,643 [Thread-1] INFO com.tc.properties.TCProperties - The property "l2.l1reconnect.timeout.millis" was overridden to 1 from 2000 by the tc-config file
+2010-09-21 20:54:14,643 [Thread-1] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties = { cvt.buffer.randomsuffix.enabled = false, cvt.client.fail.buffer.open = false, cvt.rest.interface.enabled = true, cvt.retriever.notification.interval = 60, cvt.statistics.logging.interval = 900, cvt.store.randomsuffix.enabled = false, dev.console.max.operator.events = 5000, ehcache.clusterAllCacheManagers = true, ehcache.concurrency = 128, ehcache.evictor.logging.enabled = false, ehcache.evictor.pool.size = 1, ehcache.global.eviction.enable = true, ehcache.global.eviction.frequency = 10, ehcache.global.eviction.rest.timeMillis = 10, ehcache.global.eviction.segments = 2, ehcache.lock.readLevel = READ, ehcache.lock.writeLevel = WRITE, ehcache.logging.enabled = false, ehcache.storageStrategy.dcv2.localcache.enabled = true, ehcache.storageStrategy.dcv2.perElementTTITTL.enabled = false, ehcache.storageStrategy.dcv2.periodicEviction.enabled = true, http.defaultservlet.attribute.aliases = false;, http.defaultservlet.attribute.dirallowed = false;, http.defaultservlet.enabled = false;, instrumentation.finalField.fastRead = true, l1.cachemanager.criticalObjectThreshold = -1, l1.cachemanager.criticalThreshold = 90, l1.cachemanager.enabled = true, l1.cachemanager.leastCount = 2, l1.cachemanager.logging.enabled = false, l1.cachemanager.monitorOldGenOnly = true, l1.cachemanager.percentageToEvict = 10, l1.cachemanager.sleepInterval = 3000, l1.cachemanager.threshold = 70, l1.connect.versionMatchCheck.enabled = true, l1.healthcheck.l2.bindAddress = 0.0.0.0, l1.healthcheck.l2.bindPort = 0, l1.healthcheck.l2.ping.enabled = true, l1.healthcheck.l2.ping.idletime = 5000, l1.healthcheck.l2.ping.interval = 1000, l1.healthcheck.l2.ping.probes = 3, l1.healthcheck.l2.socketConnect = true, l1.healthcheck.l2.socketConnectCount = 13, l1.healthcheck.l2.socketConnectTimeout = 5, l1.jvm.check.compatibility = true, l1.l2.config.validation.enabled = true, l1.lock.statistics.gatherInterval = 1, l1.lock.statistics.traceDepth = 0, l1.lockmanager.striped.count = 128, l1.lockmanager.timeout.interval = 60000, l1.max.connect.retries = -1, l1.modules.additional = , l1.modules.default = org.terracotta.modules.excludes-config;bundle-version:=3.3.0,org.terracotta.modules.guimodels-config;bundle-version:=3.3.0,org.terracotta.modules.jdk15-preinst-config;bundle-version:=3.3.0,org.terracotta.modules.standard-config;bundle-version:=3.3.0, l1.modules.repositories = , l1.modules.tc-version-check = , l1.objectmanager.fault.logging.enabled = false, l1.objectmanager.flush.logging.enabled = false, l1.objectmanager.objectid.request.size = 50000, l1.objectmanager.remote.batchLookupTimePeriod = 1, l1.objectmanager.remote.logging.enabled = false, l1.objectmanager.remote.maxDNALRUSize = 60, l1.objectmanager.remote.maxRequestSentImmediately = 4, l1.seda.stage.sink.capacity = -1, l1.serverarray.objectCreationStrategy = round-robin, l1.serverarray.objectCreationStrategy.groupAffinity.groupName = mirror-group1, l1.serverarray.objectCreationStrategy.roundRobin.startIndex = sequential, l1.servermapmanager.remote.batchLookupTimePeriod = 1, l1.servermapmanager.remote.maxRequestSentImmediately = 4, l1.socket.connect.timeout = 10000, l1.socket.reconnect.waitInterval = 1000, l1.transactionmanager.completedAckFlushTimeout = 5000, l1.transactionmanager.folding.debug = false, l1.transactionmanager.folding.enabled = true, l1.transactionmanager.folding.lock.limit = 0, l1.transactionmanager.folding.object.limit = 0, l1.transactionmanager.logging.enabled = false, l1.transactionmanager.maxBatchSizeInKiloBytes = 128, l1.transactionmanager.maxOutstandingBatchSize = 4, l1.transactionmanager.maxPendingBatches = 88, l1.transactionmanager.maxSleepTimeBeforeHalt = 1024, l1.transactionmanager.strings.compress.enabled = true, l1.transactionmanager.strings.compress.logging.enabled = false, l1.transactionmanager.strings.compress.minSize = 512, l1.transactionmanager.timeoutForAckOnExit = 300, l2.beanshell.enabled = false, l2.beanshell.port = 9929, l2.berkeleydb.je.checkpointer.bytesInterval = 100000000, l2.berkeleydb.je.cleaner.bytesInterval = 20000000, l2.berkeleydb.je.cleaner.detailMaxMemoryPercentage = 5, l2.berkeleydb.je.cleaner.lookAheadCacheSize = 32768, l2.berkeleydb.je.cleaner.minAge = 5, l2.berkeleydb.je.lock.nLockTables = 7, l2.berkeleydb.je.lock.timeout = 180000000, l2.berkeleydb.je.maxMemoryPercent = 25, l2.cachemanager.criticalObjectThreshold = -1, l2.cachemanager.criticalThreshold = 90, l2.cachemanager.enabled = true, l2.cachemanager.leastCount = 2, l2.cachemanager.logging.enabled = false, l2.cachemanager.monitorOldGenOnly = true, l2.cachemanager.percentageToEvict = 10, l2.cachemanager.sleepInterval = 3000, l2.cachemanager.threshold = 70, l2.data.backup.throttle.timeInMillis = 0, l2.dump.on.exception.timeout = 30, l2.healthcheck.l1.ping.enabled = true, l2.healthcheck.l1.ping.idletime = 5000, l2.healthcheck.l1.ping.interval = 1000, l2.healthcheck.l1.ping.probes = 3, l2.healthcheck.l1.socketConnect = true, l2.healthcheck.l1.socketConnectCount = 10, l2.healthcheck.l1.socketConnectTimeout = 5, l2.healthcheck.l2.ping.enabled = true, l2.healthcheck.l2.ping.idletime = 5000, l2.healthcheck.l2.ping.interval = 1000, l2.healthcheck.l2.ping.probes = 3, l2.healthcheck.l2.socketConnect = true, l2.healthcheck.l2.socketConnectCount = 10, l2.healthcheck.l2.socketConnectTimeout = 5, l2.l1reconnect.enabled = true, l2.l1reconnect.maxDelayedAcks = 16, l2.l1reconnect.sendWindow = 32, l2.l1reconnect.sendqueue.cap = 5000, l2.l1reconnect.timeout.millis = 1, l2.lfu.agingFactor = 1, l2.lfu.debug.enabled = false, l2.lfu.recentlyAccessedIgnorePercentage = 20, l2.lockmanager.greedy.lease.enabled = true, l2.lockmanager.greedy.lease.leaseTimeInMillis = 50, l2.lockmanager.greedy.locks.enabled = true, l2.nha.autoRestart = true, l2.nha.dirtydb.autoDelete = true, l2.nha.dirtydb.rolling = 0, l2.nha.send.timeout.millis = 16000, l2.nha.tcgroupcomm.discovery.interval = 1000, l2.nha.tcgroupcomm.handshake.timeout = 5000, l2.nha.tcgroupcomm.reconnect.enabled = false, l2.nha.tcgroupcomm.reconnect.maxDelayedAcks = 16, l2.nha.tcgroupcomm.reconnect.sendWindow = 32, l2.nha.tcgroupcomm.reconnect.sendqueue.cap = 5000, l2.nha.tcgroupcomm.reconnect.timeout = 2000, l2.objectmanager.cachePolicy = lfu, l2.objectmanager.deleteBatchSize = 5000, l2.objectmanager.dgc.enterpriseMarkStageInterval = 1000, l2.objectmanager.dgc.faulting.optimization = true, l2.objectmanager.dgc.throttle.requestsPerThrottle = 1000, l2.objectmanager.dgc.throttle.timeInMillis = 0, l2.objectmanager.dgc.young.enabled = false, l2.objectmanager.dgc.young.frequencyInMillis = 180000, l2.objectmanager.fault.logging.enabled = false, l2.objectmanager.flush.logging.enabled = false, l2.objectmanager.loadObjectID.checkpoint.maxlimit = -1, l2.objectmanager.loadObjectID.checkpoint.maxsleep = 10000, l2.objectmanager.loadObjectID.longsPerDiskEntry = 8, l2.objectmanager.loadObjectID.mapsdatabase.longsPerDiskEntry = 1, l2.objectmanager.maxObjectsInTxnObjGrouping = 5000, l2.objectmanager.maxObjectsToCommit = 5000, l2.objectmanager.maxTxnsInTxnObjectGrouping = 500, l2.objectmanager.objectrequest.logging.enabled = false, l2.objectmanager.objectrequest.split.size = 5, l2.objectmanager.passive.sync.batch.size = 500, l2.objectmanager.passive.sync.throttle.timeInMillis = 0, l2.objectmanager.persistor.logging.enabled = false, l2.objectmanager.request.logging.enabled = false, l2.operator.events.store = 1500, l2.remotejmx.idletime = 5, l2.remotejmx.maxthreads = 50, l2.seda.commitstage.threads = 4, l2.seda.faultstage.threads = 4, l2.seda.flushstage.threads = 4, l2.seda.gcdeletestage.threads = 1, l2.seda.managedobjectrequeststage.threads = 4, l2.seda.managedobjectresponsestage.threads = 4, l2.seda.stage.sink.capacity = -1, l2.serverarray.2pc.enabled = true, l2.startuplock.retries.enabled = false, l2.transactionmanager.logging.enabled = false, l2.transactionmanager.logging.printBroadcastStats = false, l2.transactionmanager.logging.printCommits = false, l2.transactionmanager.logging.printStats = true, l2.transactionmanager.logging.verbose = false, l2.transactionmanager.passive.throttle.enabled = true, l2.transactionmanager.passive.throttle.maxSleepSeconds = 5, l2.transactionmanager.passive.throttle.threshold = 20000, lock.statistics.enabled = false, logging.longgc.threshold = 8000, logging.maxBackups = 20, logging.maxLogFileSize = 512, memory.monitor.forcebasic = false, net.core.keepalive = false, net.core.tcpnodelay = true, session.debug.hops = false, session.debug.hops.interval = 100, session.debug.invalidate = false, session.debug.sessions = false, session.invalidator.bench.enabled = true, session.invalidator.sleep = 300, session.request.bench.enabled = false, session.request.tracking = false, session.request.tracking.dump = false, session.request.tracking.interval = 2500, session.request.tracking.threshold = 15000, session.statistics.enabled = false, session.vhosts.excluded = , stats.printer.intervalInMillis = 5000, tc.bytebuffer.common.pool.maxcount = 3000, tc.bytebuffer.pooling.enabled = true, tc.bytebuffer.threadlocal.pool.maxcount = 2000, tc.config.getFromSource.timeout = 30000, tc.management.mbeans.enabled = true, tc.management.test.mbeans.enabled = false, tc.messages.grouping.enabled = true, tc.messages.grouping.maxSizeKiloBytes = 1024, tc.stage.monitor.delay = 5000, tc.stage.monitor.enabled = false, tc.transport.handshake.timeout = 10000, tcm.monitor.delay = 5, tcm.monitor.enabled = false }
+2010-09-21 20:54:14,768 [Thread-1] INFO com.terracottatech.console - Log file: 'C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\bin\tc-data\client-logs\192.168.1.2\20100921205414737\terracotta-client.log'.
+2010-09-21 20:54:14,783 [Thread-1] INFO com.tc.logging.TCLogging - All Java System Properties for this Terracotta instance:
+========================================================================
+JVM arguments: [-XX:+UseParallelGC, -Dlogback.configurationFile=C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\/terrastore-logback.xml]
+awt.toolkit                         : sun.awt.windows.WToolkit
+file.encoding                       : Cp1252
+file.encoding.pkg                   : sun.io
+file.separator                      : \
+java.awt.graphicsenv                : sun.awt.Win32GraphicsEnvironment
+java.awt.printerjob                 : sun.awt.windows.WPrinterJob
+java.class.path                     : C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\extensions;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\activation-1.1.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\activeio-core-3.1.2.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\activemq-core-5.3.2.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\activemq-pool-5.3.2.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\activemq-protobuf-1.0.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\aopalliance-1.0.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\args4j-2.0.14.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\commons-codec-1.2.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\commons-httpclient-3.1.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\commons-jxpath-1.3.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\commons-lang-2.4.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\commons-logging-1.1.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\commons-logging-api-1.1.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\commons-net-2.0.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\commons-pool-1.5.4.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\geronimo-j2ee-management_1.0_spec-1.0.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\geronimo-j2ee-management_1.1_spec-1.0.1.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\geronimo-jms_1.1_spec-1.1.1.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\geronimo-jta_1.0.1B_spec-1.0.1.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\google-collections-1.0.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\hawtbuf-1.1.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\hawtdb-1.3.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\jackson-core-asl-1.6.0.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\jackson-mapper-asl-1.6.0.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\javassist-3.6.0.GA.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\jaxrs-api-2.0.0.GA.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\jcip-annotations-1.0.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\jcl-over-slf4j-1.5.8.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\jetty-6.1.22.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\jetty-util-6.1.22.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\jsr166y-20100604.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\jsr250-api-1.0.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\kahadb-5.3.2.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\log4j-over-slf4j-1.5.8.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\logback-classic-0.9.18.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\logback-core-0.9.18.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\netty-3.2.2.Final.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\resteasy-jaxrs-2.0.0.GA.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\resteasy-spring-2.0.0.GA.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\scannotation-1.0.2.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\servlet-api-2.5-20081211.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\slf4j-api-1.5.8.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\spring-aop-2.5.6.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\spring-beans-2.5.6.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\spring-context-2.5.6.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\spring-context-support-2.5.6.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\spring-core-2.5.6.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\spring-jms-2.5.6.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\spring-tx-2.5.6.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\spring-web-2.5.6.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\start-6.1.22.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\terracotta-toolkit-1.0-api-1.0.0.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\terracotta-toolkit-1.0-impl-1.0.0.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\terracotta-toolkit-1.0-runtime-1.0.0.jar;C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\libs\terrastore-0.7.0.jar
+java.class.version                  : 50.0
+java.endorsed.dirs                  : C:\Program Files\Java\jdk1.6.0_21\jre\lib\endorsed
+java.ext.dirs                       : C:\Program Files\Java\jdk1.6.0_21\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
+java.home                           : C:\Program Files\Java\jdk1.6.0_21\jre
+java.io.tmpdir                      : C:\Users\Robert\AppData\Local\Temp\
+java.library.path                   : C:\Program Files\Java\jdk1.6.0_21\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\EgisTec MyWinLocker\x86;C:\Program Files (x86)\EgisTec MyWinLocker\x64;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files\Java\jdk1.6.0_21\bin;C:\Dev\Tools\maven\apache-maven-2.2.1\bin;C:\Dev\Tools\Scala\scala-2.7.7.final\bin;C:\Program Files\OpenSSL-Win64\bin;C:\Dev\Tools\cygwin\bin;C:\Program Files\MySQL\MySQL Server 5.1\bin;C:\Dev\Tools\ant\apache-ant-1.8.1\bin
+java.runtime.name                   : Java(TM) SE Runtime Environment
+java.runtime.version                : 1.6.0_21-b07
+java.specification.name             : Java Platform API Specification
+java.specification.vendor           : Sun Microsystems Inc.
+java.specification.version          : 1.6
+java.vendor                         : Sun Microsystems Inc.
+java.vendor.url                     : http://java.sun.com/
+java.vendor.url.bug                 : http://java.sun.com/cgi-bin/bugreport.cgi
+java.version                        : 1.6.0_21
+java.vm.info                        : mixed mode
+java.vm.name                        : Java HotSpot(TM) 64-Bit Server VM
+java.vm.specification.name          : Java Virtual Machine Specification
+java.vm.specification.vendor        : Sun Microsystems Inc.
+java.vm.specification.version       : 1.0
+java.vm.vendor                      : Sun Microsystems Inc.
+java.vm.version                     : 17.0-b17
+line.separator                      : 
+
+logback.configurationFile           : C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\/terrastore-logback.xml
+org.hyperic.sigar.path              : C:\Users\Robert\AppData\Local\Temp\tmpSigarJars108674127993760805642328031797397
+os.arch                             : amd64
+os.name                             : Windows 7
+os.version                          : 6.1
+path.separator                      : ;
+sun.arch.data.model                 : 64
+sun.boot.class.path                 : C:\Program Files\Java\jdk1.6.0_21\jre\lib\resources.jar;C:\Program Files\Java\jdk1.6.0_21\jre\lib\rt.jar;C:\Program Files\Java\jdk1.6.0_21\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.6.0_21\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.6.0_21\jre\lib\jce.jar;C:\Program Files\Java\jdk1.6.0_21\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.6.0_21\jre\classes
+sun.boot.library.path               : C:\Program Files\Java\jdk1.6.0_21\jre\bin
+sun.cpu.endian                      : little
+sun.cpu.isalist                     : amd64
+sun.desktop                         : windows
+sun.io.unicode.encoding             : UnicodeLittle
+sun.java.launcher                   : SUN_STANDARD
+sun.jnu.encoding                    : Cp1252
+sun.management.compiler             : HotSpot 64-Bit Server Compiler
+sun.net.client.defaultConnectTimeout: 30000
+sun.net.client.defaultReadTimeout   : 30000
+sun.os.patch.level                  : 
+tc.active                           : true
+tc.dso.globalmode                   : false
+user.country                        : SE
+user.dir                            : C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\server2\bin
+user.home                           : C:\Users\Robert
+user.language                       : sv
+user.name                           : Robert
+user.timezone                       : Europe/Berlin
+user.variant                        : 
+========================================================================
+2010-09-21 20:54:15,142 [Thread-1] INFO com.tc.bundles.Resolver - new version = 1.0.0
+2010-09-21 20:54:15,142 [Thread-1] INFO com.tc.bundles.Resolver - Resolved TIM org.terracotta.toolkit:terracotta-toolkit-1.0:1.0.0 from tcjar:__TC__jar:file:/C:/Dev/Source/Examples/TerrastoreExample/terrastore/payments/server2/libs/terracotta-toolkit-1.0-runtime-1.0.0.jar!/TIMs/terracotta-toolkit-1.0-1.0.0.jar__TC__/
+2010-09-21 20:54:15,392 [Thread-1] WARN com.tc.plugins.ModulesLoader - org.terracotta.modules.excludes-config does not declare a TIM API version requirement
+2010-09-21 20:54:15,423 [Thread-1] WARN com.tc.plugins.ModulesLoader - org.terracotta.modules.guimodels-config does not declare a TIM API version requirement
+2010-09-21 20:54:15,423 [Thread-1] WARN com.tc.plugins.ModulesLoader - org.terracotta.modules.jdk15-preinst-config does not declare a TIM API version requirement
+2010-09-21 20:54:15,423 [Thread-1] WARN com.tc.plugins.ModulesLoader - org.terracotta.modules.standard-config does not declare a TIM API version requirement
+2010-09-21 20:54:15,532 [Thread-1] WARN com.tc.plugins.ModulesLoader - org.terracotta.toolkit.terracotta-toolkit-1.0 does not declare a TIM API version requirement
+2010-09-21 20:54:15,532 [Thread-1] INFO com.tc.plugins.ModulesLoader - BuildInfo for module: org.terracotta.toolkit.terracotta-toolkit-1.0
+  BuildInfo-User: cruise
+  BuildInfo-Revision: 24168
+  BuildInfo-Timestamp: 20100719-132638
+  BuildInfo-URL: https://svn.terracotta.org/repo/forge/projects/terracotta-toolkit/branches/taraval-rc/toolkit
+  BuildInfo-Host: su10mo5
+
+2010-09-21 20:54:15,548 [Thread-1] INFO com.tc.plugins.ModulesLoader - Config loaded from module: org.terracotta.toolkit.terracotta-toolkit-1.0 (terracotta_api.xml)
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment>
+  <instrumented-classes>
+    <include>
+      <class-expression>@org.terracotta.annotations.InstrumentedClass *</class-expression>
+    </include>
+    <include>
+      <class-expression>@org.terracotta.annotations.InstrumentedClass @org.terracotta.annotations.HonorTransient *</class-expression>
+      <honor-transient>true</honor-transient>
+    </include>
+  </instrumented-classes>
+
+  <locks>
+    <!-- annotation locking expressions -->
+    <autolock>
+      <method-expression>@org.terracotta.annotations.AutolockWrite * *(..)</method-expression>
+      <lock-level>write</lock-level>
+    </autolock>
+    <autolock auto-synchronized="true">
+      <method-expression>@org.terracotta.annotations.AutolockWriteAutoSync * *(..)</method-expression>
+      <lock-level>write</lock-level>
+    </autolock>    
+    <autolock>
+      <method-expression>@org.terracotta.annotations.AutolockRead * *(..)</method-expression>
+      <lock-level>read</lock-level>
+    </autolock>
+    <autolock auto-synchronized="true">
+      <method-expression>@org.terracotta.annotations.AutolockReadAutoSync * *(..)</method-expression>
+      <lock-level>read</lock-level>
+    </autolock>    
+    <autolock>
+      <method-expression>@org.terracotta.annotations.AutolockSynchronousWrite * *(..)</method-expression>
+      <lock-level>synchronous-write</lock-level>
+    </autolock>
+    <autolock auto-synchronized="true">
+      <method-expression>@org.terracotta.annotations.AutolockSynchronousWriteAutoSync * *(..)</method-expression>
+      <lock-level>synchronous-write</lock-level>
+    </autolock>    
+    <autolock>
+      <method-expression>@org.terracotta.annotations.AutolockConcurrent * *(..)</method-expression>
+      <lock-level>concurrent</lock-level>
+    </autolock>
+  </locks>
+
+  <distributed-methods>
+    <method-expression>@org.terracotta.annotations.DMI * *(..)</method-expression>
+  </distributed-methods>
+
+  <roots>
+    <root>
+      <field-expression>@org.terracotta.annotations.Root * *</field-expression>
+    </root>
+  </roots>
+
+</xml-fragment>
+2010-09-21 20:54:15,719 [Thread-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://192.168.1.2:9510/groupinfo
+2010-09-21 20:54:15,735 [Thread-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://192.168.1.2:9510/l1reconnectproperties
+2010-09-21 20:54:15,766 [Thread-1] INFO com.tc.net.core.TCComm - Comm Worker Threads NOT requested
+2010-09-21 20:54:15,797 [Thread-1] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl: DSO Client - HealthChecker Started
+2010-09-21 20:54:15,907 [Thread-1] INFO com.tc.net.protocol.tcm.CommunicationsManager - HealthCheck CallbackPort Listener started at /0.0.0.0:61438
+2010-09-21 20:54:15,938 [Thread-1] INFO com.tc.object.ApplicatorDNAEncodingImpl - Compressed String constructor not present
+2010-09-21 20:54:15,969 [Thread-1] INFO com.terracottatech.dso - Statistics buffer opened
+2010-09-21 20:54:15,969 [Statistics Logger] INFO com.terracottatech.dso - memory free : 1826132984
+2010-09-21 20:54:15,969 [Statistics Logger] INFO com.terracottatech.dso - memory used : 67857416
+2010-09-21 20:54:15,969 [Statistics Logger] INFO com.terracottatech.dso - memory max : 1893990400
+2010-09-21 20:54:16,000 [Thread-1] INFO com.tc.statistics.StatisticRetrievalAction - "message monitor" statistic is not enabled. Please enable the property "tcm.monitor.delay" to collect this statistics.
+2010-09-21 20:54:16,047 [Thread-1] INFO com.tc.runtime.TCMemoryManagerImpl - GarbageCollector: PS Scavenge
+2010-09-21 20:54:16,047 [Thread-1] INFO com.tc.runtime.TCMemoryManagerImpl - GarbageCollector: PS MarkSweep
+2010-09-21 20:54:16,125 [L1Management JMX registration] INFO com.tc.management.L1Management - Terracotta JMX connector available at[service:jmx:terracotta://localhost]
+2010-09-21 20:54:16,187 [Thread-1] INFO com.tc.net.core.TCConnection - Comms Message Batching enabled
+2010-09-21 20:54:16,187 [Thread-1] INFO com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(-1.ffffffffffffffffffffffffffffffff): Attaching new connection: com.tc.net.core.TCConnectionJDK14@16235817: connected: true, closed: false local=192.168.1.2:61439 remote=192.168.1.2:9510 connect=[Tue Sep 21 20:54:16 CEST 2010] idle=0ms [0 read, 0 write]
+2010-09-21 20:54:16,219 [Thread-1] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Client - Health monitoring agent started for Danero-PC:9510
+2010-09-21 20:54:16,219 [L1_L2:TCComm Main Selector Thread_R (listen 0.0.0.0:61438)] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Client - HealthCheckCallbackPort verification PASSED for Danero-PC:9510(callbackport: 9510)
+2010-09-21 20:54:16,219 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[1]: Connected: Unpausing from State[ PAUSED ] RemoteNode : GroupID[0]. Disconnect count : 1
+2010-09-21 20:54:16,234 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[1]: Received Handshake ack for this node :GroupID[0]
+2010-09-21 20:54:16,234 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.management.remote.protocol.terracotta.TunnelingEventHandler - Client JMX server ready; sending notification to L2 server
+2010-09-21 20:54:16,250 [Thread-1] INFO com.terracottatech.console - Connection successfully established to server at 192.168.1.2:9510
+2010-09-21 20:54:16,265 [Thread-1] INFO com.terracottatech.dso - Connection successfully established to server at 192.168.1.2:9510
+2010-09-21 20:56:16,106 [ClientLockManager LockGC] INFO com.tc.object.locks.ClientLockManager - ClientID[1]: Lock GC collected 1 garbage locks
+2010-09-21 20:57:16,119 [ClientLockManager LockGC] INFO com.tc.object.locks.ClientLockManager - ClientID[1]: Lock GC collected 8 garbage locks

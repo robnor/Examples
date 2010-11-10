@@ -1,0 +1,32 @@
+09-21 20:52:03 database: SET LOG 0
+09-21 21:58:36 database: opening C:\Dev\Source\Examples\TerrastoreExample\terrastore\payments\master\tc-data\server-statistics\statistics-store
+org.h2.jdbc.JdbcSQLException: Database may be already in use: Locked by another process. Possible solutions: close all other connection(s); use the server mode [90020-67]
+	at org.h2.message.Message.getSQLException(Message.java:89)
+	at org.h2.message.Message.getSQLException(Message.java:93)
+	at org.h2.message.Message.getSQLException(Message.java:71)
+	at org.h2.store.FileLock.error(FileLock.java:313)
+	at org.h2.store.FileLock.lockFile(FileLock.java:176)
+	at org.h2.store.FileLock.lock(FileLock.java:72)
+	at org.h2.engine.Database.open(Database.java:451)
+	at org.h2.engine.Database.<init>(Database.java:197)
+	at org.h2.engine.Engine.openSession(Engine.java:52)
+	at org.h2.engine.Engine.getSession(Engine.java:100)
+	at org.h2.engine.Session.createSession(Session.java:182)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:965)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:946)
+	at org.h2.Driver.connect(Driver.java:52)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:185)
+	at com.tc.statistics.database.impl.H2StatisticsDatabase.openConnection(H2StatisticsDatabase.java:64)
+	at com.tc.statistics.database.impl.AbstractStatisticsDatabase.open(AbstractStatisticsDatabase.java:50)
+	at com.tc.statistics.database.impl.H2StatisticsDatabase.open(H2StatisticsDatabase.java:57)
+	at com.tc.statistics.store.h2.H2StatisticsStoreImpl$1.execute(H2StatisticsStoreImpl.java:114)
+	at com.tc.util.concurrent.FileLockGuard.guard(FileLockGuard.java:37)
+	at com.tc.statistics.store.h2.H2StatisticsStoreImpl.open(H2StatisticsStoreImpl.java:109)
+	at com.tc.statistics.StatisticsGathererSubSystem.setup(StatisticsGathererSubSystem.java:67)
+	at com.tc.server.TCServerImpl.<init>(TCServerImpl.java:134)
+	at com.tc.server.TCServerImpl.<init>(TCServerImpl.java:123)
+	at com.tc.server.StandardServerFactory.createServer(StandardServerFactory.java:12)
+	at com.tc.server.TCServerMain.main(TCServerMain.java:29)
+09-21 21:59:51 database: SET LOG 0
+09-21 22:01:14 database: SET LOG 0

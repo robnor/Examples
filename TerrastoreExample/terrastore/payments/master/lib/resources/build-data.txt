@@ -1,0 +1,9 @@
+terracotta.build.productname=terracotta
+terracotta.build.edition=Opensource
+terracotta.build.version=3.3.0
+terracotta.build.maven.artifacts.version=3.3.0
+terracotta.build.host=su10mo5
+terracotta.build.user=cruise
+terracotta.build.timestamp=20100716-150712
+terracotta.build.revision=15922
+terracotta.build.branch=3.3
